@@ -1,0 +1,58 @@
+body,html,*{
+    margin:0;
+    padding:0;
+    font-family: monospace;
+    overflow: hidden;
+}
+.header{
+    height:auto;
+    background-color: white;
+    font-size: 40px;
+    text-align: center;
+    letter-spacing: 10px;
+    padding:15px;
+}
+#rgb{
+    //padding-top: 15px;
+    font-size: 25px;
+}
+#gen{
+    font-size: 20px;
+}
+.info{
+    font-size: 30px;
+    font-weight: bolder;
+}
+#black,#white{
+    height:auto;
+    display:none;
+    font-size:100px;
+    margin-top: 10%;
+    text-align: center;
+}
+#black{
+    color:black;
+}
+#white{
+    color:white;
+}
+.b_circle{
+    height:150px;
+    width:150px;
+    margin: 5% auto;
+    border-radius: 100px;
+    background-color: black;
+}
+.w_circle{
+    height:150px;
+    width:150px;
+    margin: 5% auto;
+    border-radius: 100px;
+    background-color: white;
+}
+.score{
+    background-color: white;
+    height: auto;
+    width: 250px;
+    padding: 10px;
+}
