@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/synaptic/1.0.8/synaptic.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+</head>
+
+<body>
+
+    <div id="black" style="height:auto;display:none;color:black;font-size:70px;margin:0 auto;text-align: center">HERE</div>
+    <div id="white" style="height:auto;display:none;color:white;font-size:70px;margin:0 auto;text-align: center">HERE</div>
+    
+    <script>
+        var input = new synaptic.Layer(3); // Two inputs
+        var output = new synaptic.Layer(1); // Three outputs
+        input.project(output); // Connect input to output
+
+        var trainingData = [    {
+                input: [0, 0, 0],
+                output: [1]
+            },      {
+                input: [1, 1, 1],
+                output: [0]
+            },      {
+                input: [125 / 255, 125 / 255, 125 / 255],
+                output: [1]
+            },
+            {
+                input: [50 / 255, 100 / 255, 150 / 255],
+                output: [1]
+            },
+            {
+                input: [150 / 255, 100 / 255, 50 / 255],
+                output: [0]
+            },
+            {
+                input: [1, 0, 0],
+                output: [1]
+            },
+            {
+                input: [0, 1, 0],
+                output: [0]
+            },
+            {
+                input: [0, 0, 1],
+                output: [1]
+            },
+        ];
+
+        var learningRate = 0.4; 
+        function train() {    
+            for (var i = 0; i < trainingData.length; i++) {        
+                input.activate(trainingData[i]["input"]);        
+                output.activate();        
+                output.propagate(learningRate, trainingData[i]["output"]);    
+            }
+        }
+
+        function retrain() {    
+            for (var i = 0; i < 1000; i++) {        
+                trainingData = _.shuffle(trainingData);        
+                train();    
+            }
+        } 
+        retrain();
+
+        var r = Math.floor((Math.random() * 255) + 0);
+        var g = Math.floor((Math.random() * 255) + 0);
+        var b = Math.floor((Math.random() * 255) + 0);
+        var ra = r / 255;
+        var ga = g / 255;
+        var ba = b / 255;
+        input.activate([ra, ga, ba]); // Whistle
+        var result = output.activate();
+
+        document.body.style.backgroundColor = 'rgb(' + r + ',' + g + ',' + b + ')';
+        if (result[0] > 0.5) {
+            console.log(1);
+            document.getElementById("white").style.display = "block";
+        }
+        if (result[0] < 0.5) {
+            console.log(0);
+            document.getElementById("black").style.display = "block";
+        }
+
+    </script>
+</body>
+
+</html>
