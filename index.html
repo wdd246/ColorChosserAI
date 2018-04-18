@@ -11,20 +11,20 @@
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
-    <div class="header" onclick="nextGen()">
+<body onclick="nextGen()">
+    <div class="header">
         Which color white or black is better on this background ?
-
-        <p class="info"><br>*click here* <br> *if color is correct click circle*</p>
-
+        <p class="info">
+            <br>*click here* <br> *if color is correct click circle*
+        </p>
     </div>
     <div id="black">
         BLACK
-        <div class="b_circle" onclick="correc()"></div>
+        <div id="b_circle" onclick="correc()"></div>
     </div>
     <div id="white">
         WHITE
-        <div class="w_circle" onclick="correc()"></div>
+        <div id="w_circle" onclick="correc()"></div>
     </div>
     <div class="score">
         <p id="gen"></p>

@@ -36,14 +36,14 @@ body,html,*{
 #white{
     color:white;
 }
-.b_circle{
+#b_circle{
     height:150px;
     width:150px;
     margin: 5% auto;
     border-radius: 100px;
     background-color: black;
 }
-.w_circle{
+#w_circle{
     height:150px;
     width:150px;
     margin: 5% auto;
